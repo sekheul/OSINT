@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incubateurs et accélérateurs de start-up en Île-de-France</title>
+    <!-- Intégration du CSS et autres ressources si nécessaire -->
+    <style>
+        /* Ajoutez ici vos styles CSS personnalisés */
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        iframe {
+            display: block;
+            margin: 0 auto;
+            width: 90%;
+            height: 600px; /* Ajustez la hauteur selon vos besoins */
+            border: none;
+        }
+        .most-promising-startup {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .investment-advice {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Incubateurs et accélérateurs de start-up en Île-de-France</h1>
+    <!-- Intégration de la carte interactive dans l'iframe -->
+    <iframe id="map" src="https://data.iledefrance.fr/explore/embed/dataset/incubateurs-accelerateurs/map/?basemap=mbs-5ffe02&location=8,48.63109,2.12311&hideAttribution=true" width="100%" height="400" frameborder="0"></iframe>
+
+
+    <!-- Div pour afficher la startup la plus prometteuse -->
+    <div id="mostPromisingStartup" class="most-promising-startup"></div>
+
+    <!-- Div pour afficher le conseil d'investissement -->
+    <div id="investmentAdvice" class="investment-advice"></div>
+
+    <script>
+        // Fonction pour trouver la startup la plus prometteuse parmi les données récupérées
+        function findMostPromisingStartup(data) {
+            let mostPromisingStartup = null;
+            let maxScore = 0;
+
+            // Parcours des données pour calculer le score de chaque startup
+            data.forEach(startup => {
+                let score = 0;
+                // Exemple de critères de calcul de score
+                // Vous pouvez adapter cette logique selon vos besoins
+                // Ici, nous attribuons simplement un score de 1 à chaque startup
+                score = 1;
+
+                // Met à jour la startup la plus prometteuse si le score est plus élevé
+                if (score > maxScore) {
+                    maxScore = score;
+                    mostPromisingStartup = startup;
+                }
+            });
+
+            return mostPromisingStartup;
+        }
+
+        // Fonction pour afficher les informations de la startup la plus prometteuse sur la page
+        function displayMostPromisingStartup(startup) {
+            const container = document.getElementById('mostPromisingStartup');
+            if (startup) {
+                container.innerHTML = `<h2>Startup la plus prometteuse :</h2>
+                                       <p><strong>Nom :</strong> ${startup.nom}</p>
+                                       <p><strong>Description :</strong> ${startup.description}</p>
+                                       <p><strong>Financement :</strong> ${startup.financement}</p>
+                                       <p><strong>Partenaires :</strong> ${startup.partenaires}</p>`;
+            } else {
+                container.innerHTML = "<p>Aucune startup prometteuse trouvée.</p>";
+            }
+        }
+
+        // Fonction pour afficher le conseil d'investissement sur la page
+        function displayInvestmentAdvice(startup) {
+            const container = document.getElementById('investmentAdvice');
+            if (startup) {
+                // Exemple de logique de conseil d'investissement
+                // Vous pouvez adapter cette logique selon vos besoins
+                const investmentAdvice = "Il est judicieux d'investir dans cette startup.";
+                container.innerHTML = `<h2>Conseil d'investissement :</h2>
+                                       <p>${investmentAdvice}</p>`;
+            } else {
+                container.innerHTML = "<p>Aucune startup sélectionnée.</p>";
+            }
+        }
+
+        // Événement de clic sur les marqueurs de la carte
+        // Cette fonction est appelée lorsque l'utilisateur clique sur un marqueur
+        function onMarkerClick(startupId) {
+            // Appel à l'API pour récupérer les données de la startup correspondante
+            fetch(`https://data.iledefrance.fr/api/records/1.0/search/?dataset=incubateurs-accelerateurs&q=id:${startupId}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Extraction des données de la startup à partir de la réponse de l'API
+                    const startup = data.records[0].fields;
+                    // Calcul de la startup la plus prometteuse parmi les données récupérées
+                    const mostPromisingStartup = findMostPromisingStartup([startup]);
+                    // Affichage des informations de la startup la plus prometteuse sur la page
+                    displayMostPromisingStartup(mostPromisingStartup);
+                    // Affichage du conseil d'investissement sur la page
+                    displayInvestmentAdvice(mostPromisingStartup);
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la récupération des données de la startup :', error);
+                });
+        }
+    </script>
+</body>
+</html>
