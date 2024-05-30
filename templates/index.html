@@ -1,48 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Incubateurs et accélérateurs de start-up en Île-de-France</title>
-    <!-- Intégration du CSS et autres ressources si nécessaire -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Ajoutez ici vos styles CSS personnalisés */
-        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column; /* Ajouté pour les petits écrans */
         }
         h1 {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 0;
+            padding: 10px 0;
+            background-color: #ba5511;
+            color: #ffffff;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        #nav-bar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            height: 100vh;
+            padding-top: 60px;
+            box-sizing: border-box;
+            position: fixed; /* Fixé à gauche */
+            top: 0;
+            left: 0;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(0);
+        }
+        #nav-header {
+            padding: 10px;
+            text-align: center;
+        }
+        #nav-header a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+        #nav-content {
+            padding: 10px;
+        }
+        .nav-button {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+        .nav-button i {
+            margin-right: 10px;
+        }
+        .nav-button:hover {
+            background-color: #575757;
+        }
+        #nav-footer {
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 250px;
+        }
+        #nav-footer-avatar img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        #nav-footer-titlebox {
+            margin-left: 10px;
+        }
+        #mapContainer {
+            flex-grow: 1;
+            margin-top: 60px;
+            padding: 0;
+            box-sizing: border-box;
+            margin-left: 250px; /* Ajouté pour ne pas chevaucher la navigation */
+            transition: margin-left 0.3s ease-in-out;
         }
         iframe {
-            display: block;
-            margin: 0 auto;
-            width: 90%;
-            height: 600px; /* Ajustez la hauteur selon vos besoins */
+            width: 100%;
+            height: calc(100vh - 60px);
             border: none;
         }
-        .most-promising-startup {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .investment-advice {
-            text-align: center;
-            margin-top: 20px;
+        /* Media Queries pour petits écrans */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            #nav-bar {
+                transform: translateX(-100%);
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+            #mapContainer {
+                margin-left: 0;
+                margin-top: 60px;
+            }
+            #nav-bar.open {
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
 <body>
     <h1>Incubateurs et accélérateurs de start-up en Île-de-France</h1>
-    <!-- Intégration de la carte interactive dans l'iframe -->
-    <iframe id="map" src="https://data.iledefrance.fr/explore/embed/dataset/incubateurs-accelerateurs/map/?basemap=mbs-5ffe02&location=8,48.63109,2.12311&hideAttribution=true" width="100%" height="400" frameborder="0"></iframe>
+    
+    <!-- Barre de navigation latérale -->
+    <div id="nav-bar">
+        <div id="nav-header">
+            <a id="nav-title" href="https://codepen.io" target="_blank">
+                C<i class="fab fa-codepen"></i>DEPEN
+            </a>
+            <hr>
+        </div>
+        <div id="nav-content">
+            <a class="nav-button" href="#"><i class="fas fa-palette"></i><span>Startups prometteuse</span></a>
+            <a class="nav-button" href="#"><i class="fas fa-images"></i><span>Conseil d'investissement</span></a>
+            <a class="nav-button" href="#"><i class="fas fa-thumbtack"></i><span>Pinned Items</span></a>
+            <hr>
+            <a class="nav-button" href="#"><i class="fas fa-magic"></i><span>Spark</span></a>
+        </div>
+    </div>
 
-
-    <!-- Div pour afficher la startup la plus prometteuse -->
-    <div id="mostPromisingStartup" class="most-promising-startup"></div>
-
-    <!-- Div pour afficher le conseil d'investissement -->
-    <div id="investmentAdvice" class="investment-advice"></div>
+    <!-- Conteneur de la carte -->
+    <div id="mapContainer">
+        <iframe id="map" src="https://data.iledefrance.fr/explore/embed/dataset/incubateurs-accelerateurs/map/?basemap=mbs-5ffe02&location=8,48.63109,2.12311&hideAttribution=true"></iframe>
+    </div>
 
     <script>
         // Fonction pour trouver la startup la plus prometteuse parmi les données récupérées
@@ -50,15 +142,9 @@
             let mostPromisingStartup = null;
             let maxScore = 0;
 
-            // Parcours des données pour calculer le score de chaque startup
             data.forEach(startup => {
-                let score = 0;
-                // Exemple de critères de calcul de score
-                // Vous pouvez adapter cette logique selon vos besoins
-                // Ici, nous attribuons simplement un score de 1 à chaque startup
-                score = 1;
+                let score = 1;
 
-                // Met à jour la startup la plus prometteuse si le score est plus élevé
                 if (score > maxScore) {
                     maxScore = score;
                     mostPromisingStartup = startup;
@@ -70,52 +156,42 @@
 
         // Fonction pour afficher les informations de la startup la plus prometteuse sur la page
         function displayMostPromisingStartup(startup) {
-            const container = document.getElementById('mostPromisingStartup');
-            if (startup) {
-                container.innerHTML = `<h2>Startup la plus prometteuse :</h2>
-                                       <p><strong>Nom :</strong> ${startup.nom}</p>
-                                       <p><strong>Description :</strong> ${startup.description}</p>
-                                       <p><strong>Financement :</strong> ${startup.financement}</p>
-                                       <p><strong>Partenaires :</strong> ${startup.partenaires}</p>`;
-            } else {
-                container.innerHTML = "<p>Aucune startup prometteuse trouvée.</p>";
-            }
+            console.log('Startup la plus prometteuse:', startup);
         }
 
         // Fonction pour afficher le conseil d'investissement sur la page
         function displayInvestmentAdvice(startup) {
-            const container = document.getElementById('investmentAdvice');
-            if (startup) {
-                // Exemple de logique de conseil d'investissement
-                // Vous pouvez adapter cette logique selon vos besoins
-                const investmentAdvice = "Il est judicieux d'investir dans cette startup.";
-                container.innerHTML = `<h2>Conseil d'investissement :</h2>
-                                       <p>${investmentAdvice}</p>`;
-            } else {
-                container.innerHTML = "<p>Aucune startup sélectionnée.</p>";
-            }
+            console.log('Conseil d\'investissement:', "Il est judicieux d'investir dans cette startup.");
         }
 
         // Événement de clic sur les marqueurs de la carte
-        // Cette fonction est appelée lorsque l'utilisateur clique sur un marqueur
         function onMarkerClick(startupId) {
-            // Appel à l'API pour récupérer les données de la startup correspondante
             fetch(`https://data.iledefrance.fr/api/records/1.0/search/?dataset=incubateurs-accelerateurs&q=id:${startupId}`)
                 .then(response => response.json())
                 .then(data => {
-                    // Extraction des données de la startup à partir de la réponse de l'API
                     const startup = data.records[0].fields;
-                    // Calcul de la startup la plus prometteuse parmi les données récupérées
                     const mostPromisingStartup = findMostPromisingStartup([startup]);
-                    // Affichage des informations de la startup la plus prometteuse sur la page
                     displayMostPromisingStartup(mostPromisingStartup);
-                    // Affichage du conseil d'investissement sur la page
                     displayInvestmentAdvice(mostPromisingStartup);
                 })
                 .catch(error => {
                     console.error('Erreur lors de la récupération des données de la startup :', error);
                 });
         }
+
+        // Fonction pour ouvrir/fermer la barre de navigation sur les petits écrans
+        function toggleNavBar() {
+            document.getElementById('nav-bar').classList.toggle('open');
+        }
+
+        // Ajouter un événement de clic pour ouvrir/fermer la barre de navigation
+        document.addEventListener('DOMContentLoaded', function () {
+            var navToggle = document.createElement('div');
+            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            navToggle.style.cssText = 'position: fixed; top: 10px; left: 10px; font-size: 24px; color: white; z-index: 1001; cursor: pointer;';
+            navToggle.addEventListener('click', toggleNavBar);
+            document.body.appendChild(navToggle);
+        });
     </script>
 </body>
 </html>
