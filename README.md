@@ -1,5 +1,5 @@
 Startup Finder - Île-de-France
-Description
+# Description
 Startup Finder est une application de localisation qui aide les accélérateurs et incubateurs à identifier et visualiser les startups en Île-de-France. Notre outil offre une cartographie interactive des startups, permettant une recherche efficace par secteur, stade de développement, et localisation.
 
 # Fonctionnalités
