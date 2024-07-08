@@ -17,52 +17,40 @@ MongoDB (ou un autre base de données compatible)
 Étapes d'Installation
 Clonez le dépôt :
 
-bash
-Copier le code
 git clone https://github.com/sekheul/OSINT.git
 cd startup-finder
 Installez les dépendances :
-
-bash
-Copier le code
 npm install
-ou
 
 bash
-Copier le code
 yarn install
 Configurez les variables d'environnement :
 
 Créez un fichier .env à la racine du projet et ajoutez vos variables d'environnement :
 
-bash
-Copier le code
 MONGODB_URI=mongodb://localhost:27017/startup-finder
 PORT=3000
+
 Démarrez l'application :
-
-bash
-Copier le code
 npm start
-ou
-
-bash
-Copier le code
 yarn start
 L'application sera accessible sur http://localhost:3000.
 
 # Utilisation
-Accéder à la Carte Interactive
-Rendez-vous sur la page d'accueil de l'application.
-Utilisez la carte pour explorer les startups en Île-de-France.
-Appliquez des filtres selon le secteur, stade de développement, ou d'autres critères.
-Recherche de Startups
-Utilisez la barre de recherche pour entrer des mots-clés.
-Visualisez les résultats directement sur la carte ou dans la liste de résultats.
-Accéder aux Détails
-Cliquez sur une startup sur la carte pour voir un aperçu.
-Cliquez sur le lien pour accéder à la page détaillée de la startup avec plus d'informations.
-Contribuer
+# Accéder à la Carte Interactive
+1. Rendez-vous sur la page d'accueil de l'application.
+2. Utilisez la carte pour explorer les startups en Île-de-France.
+3. Appliquez des filtres selon le secteur, stade de développement, ou d'autres critères.
+
+# Recherche de Startups
+1. Utilisez la barre de recherche pour entrer des mots-clés.
+2. Visualisez les résultats directement sur la carte ou dans la liste de résultats.
+
+# Accéder aux Détails
+1. Cliquez sur une startup sur la carte pour voir un aperçu.
+2. Cliquez sur le lien pour accéder à la page détaillée de la startup avec plus d'informations.
+
+# Contribuer
 Nous accueillons les contributions pour améliorer Startup Finder. Pour contribuer, veuillez suivre les étapes suivantes :
 
 Fork le projet.
@@ -71,7 +59,7 @@ Commitez vos modifications (git commit -am 'Ajoute une nouvelle fonctionnalité'
 Poussez la branche (git push origin feature/ma-fonctionnalite).
 Créez une Pull Request.
 # Licence
-Ce projet est sous licence MIT.
+Ce projet est sous license CC BY-NC-SA 4.0 
 
 # Crédits
 Développeurs : Baye Ibrahima NDIAYE
