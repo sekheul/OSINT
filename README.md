@@ -10,12 +10,12 @@ Filtres Dynamiques : Affinez votre recherche avec des filtres sur la taille de l
 Intégration avec des Services Externes : Exportez les données vers CSV ou intégrez avec des CRM populaires.
 
 # Installation
-# Prérequis 
+## Prérequis 
 Node.js (version 14.x ou supérieure) \n
 npm (version 6.x ou supérieure) ou Yarn
 MongoDB (ou un autre base de données compatible)
 
-Étapes d'Installation
+## Étapes d'Installation
 
 Clonez le dépôt :
 git clone https://github.com/sekheul/OSINT.git
@@ -37,16 +37,16 @@ yarn start
 L'application sera accessible sur http://localhost:3000.
 
 # Utilisation
-# Accéder à la Carte Interactive
+## Accéder à la Carte Interactive
 1. Rendez-vous sur la page d'accueil de l'application.
 2. Utilisez la carte pour explorer les startups en Île-de-France.
 3. Appliquez des filtres selon le secteur, stade de développement, ou d'autres critères.
 
-# Recherche de Startups
+## Recherche de Startups
 1. Utilisez la barre de recherche pour entrer des mots-clés.
 2. Visualisez les résultats directement sur la carte ou dans la liste de résultats.
 
-# Accéder aux Détails
+## Accéder aux Détails
 1. Cliquez sur une startup sur la carte pour voir un aperçu.
 2. Cliquez sur le lien pour accéder à la page détaillée de la startup avec plus d'informations.
 
