@@ -10,8 +10,8 @@ Filtres Dynamiques : Affinez votre recherche avec des filtres sur la taille de l
 Intégration avec des Services Externes : Exportez les données vers CSV ou intégrez avec des CRM populaires.
 
 # Installation
-Prérequis
-Node.js (version 14.x ou supérieure)
+# Prérequis 
+Node.js (version 14.x ou supérieure) \n
 npm (version 6.x ou supérieure) ou Yarn
 MongoDB (ou un autre base de données compatible)
 Étapes d'Installation
