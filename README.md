@@ -14,18 +14,18 @@ Intégration avec des Services Externes : Exportez les données vers CSV ou int�
 Node.js (version 14.x ou supérieure) \n
 npm (version 6.x ou supérieure) ou Yarn
 MongoDB (ou un autre base de données compatible)
-Étapes d'Installation
-Clonez le dépôt :
 
+Étapes d'Installation
+
+Clonez le dépôt :
 git clone https://github.com/sekheul/OSINT.git
 cd startup-finder
+
 Installez les dépendances :
 npm install
-
-bash
 yarn install
-Configurez les variables d'environnement :
 
+Configurez les variables d'environnement :
 Créez un fichier .env à la racine du projet et ajoutez vos variables d'environnement :
 
 MONGODB_URI=mongodb://localhost:27017/startup-finder
@@ -53,11 +53,12 @@ L'application sera accessible sur http://localhost:3000.
 # Contribuer
 Nous accueillons les contributions pour améliorer Startup Finder. Pour contribuer, veuillez suivre les étapes suivantes :
 
-Fork le projet.
-Créez une branche pour votre fonctionnalité ou correction (git checkout -b feature/ma-fonctionnalite).
-Commitez vos modifications (git commit -am 'Ajoute une nouvelle fonctionnalité').
-Poussez la branche (git push origin feature/ma-fonctionnalite).
-Créez une Pull Request.
+1. Fork le projet.
+2. Créez une branche pour votre fonctionnalité ou correction (git checkout -b feature/ma-fonctionnalite).
+3. Commitez vos modifications (git commit -am 'Ajoute une nouvelle fonctionnalité').
+4. Poussez la branche (git push origin feature/ma-fonctionnalite).
+5. Créez une Pull Request.
+
 # Licence
 Ce projet est sous license CC BY-NC-SA 4.0 
 
@@ -65,4 +66,8 @@ Ce projet est sous license CC BY-NC-SA 4.0
 Développeurs : Baye Ibrahima NDIAYE
 Design : [Nom du Designer]
 Données : [Source de données]
+
+# Contact
+Pour toute question ou suggestion, contactez-nous à sekheul96@gmail.com.
+
 
