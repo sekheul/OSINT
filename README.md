@@ -19,7 +19,7 @@ Clonez le dépôt :
 
 bash
 Copier le code
-git clone https://github.com/votre-utilisateur/startup-finder.git
+git clone https://github.com/sekheul/OSINT.git
 cd startup-finder
 Installez les dépendances :
 
