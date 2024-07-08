@@ -2,14 +2,14 @@ Startup Finder - Île-de-France
 Description
 Startup Finder est une application de localisation qui aide les accélérateurs et incubateurs à identifier et visualiser les startups en Île-de-France. Notre outil offre une cartographie interactive des startups, permettant une recherche efficace par secteur, stade de développement, et localisation.
 
-#Fonctionnalités
+# Fonctionnalités
 Carte Interactive : Visualisez les startups sur une carte avec des filtres par secteur et stade de développement.
 Recherche Avancée : Trouvez des startups par nom, secteur d'activité, et localisation.
 Détails de Startup : Accédez aux informations détaillées des startups, incluant l'année de création, les fondateurs, et les liens vers leur site web.
 Filtres Dynamiques : Affinez votre recherche avec des filtres sur la taille de l'équipe, le financement, et plus encore.
 Intégration avec des Services Externes : Exportez les données vers CSV ou intégrez avec des CRM populaires.
 
-#Installation
+# Installation
 Prérequis
 Node.js (version 14.x ou supérieure)
 npm (version 6.x ou supérieure) ou Yarn
@@ -51,7 +51,7 @@ Copier le code
 yarn start
 L'application sera accessible sur http://localhost:3000.
 
-Utilisation
+# Utilisation
 Accéder à la Carte Interactive
 Rendez-vous sur la page d'accueil de l'application.
 Utilisez la carte pour explorer les startups en Île-de-France.
@@ -70,11 +70,11 @@ Créez une branche pour votre fonctionnalité ou correction (git checkout -b fea
 Commitez vos modifications (git commit -am 'Ajoute une nouvelle fonctionnalité').
 Poussez la branche (git push origin feature/ma-fonctionnalite).
 Créez une Pull Request.
-Licence
+# Licence
 Ce projet est sous licence MIT.
 
-Crédits
-Développeurs : Votre Nom
+# Crédits
+Développeurs : Baye Ibrahima NDIAYE
 Design : [Nom du Designer]
 Données : [Source de données]
 
